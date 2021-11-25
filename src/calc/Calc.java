@@ -12,6 +12,8 @@ public class Calc {
 	
 	//사용자가 만들어낼 문제의 수
 	private int n;
+	private int ok =0;//맞힌 갯수
+
 	MunjeDto mDto ;
 
 	Random rd = new Random();
@@ -89,7 +91,6 @@ public class Calc {
 		}
 	}
 
-	static int ok =0;//맞힌 갯수
 	//답 체크 메소드
 	public void answerCheck(MunjeDto mDto) {
 		if(mDto.getDab()==mDto.getUserNumber()) {
