@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import calc.Calc;
-import dto.MunjeDto;
+import mDto.MunjeDto;
 
 public class MainClass {
 
@@ -21,10 +21,10 @@ public class MainClass {
 		//사용자가 생성한 문제 수를 입력
 		ArrayList<MunjeDto>mList=cc.makeMunje();
 		
-		for(MunjeDto dto:mList) {
-			System.out.println(dto.toString());
-			cc.inputNumber(dto);//답을 넣는다.
-			cc.answerCheck(dto);
+		for(MunjeDto mdto:mList) {
+			System.out.println(mdto.toString());
+			cc.inputNumber(mdto);//답을 넣는다.
+			cc.answerCheck(mdto);
 			
 		}
 		cc.count();//문제를 몇개 맞혔는지 출력

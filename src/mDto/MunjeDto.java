@@ -1,4 +1,4 @@
-package dto;
+package mDto;
 
 public class MunjeDto {
 	//문제를 만들때 필요한 데이터

@@ -1,4 +1,4 @@
-package dto;
+package mDto;
 
 import java.util.Random;
 

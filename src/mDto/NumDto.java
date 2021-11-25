@@ -1,4 +1,4 @@
-package dto;
+package mDto;
 /*
  * 
  * 수 데이터 클래스

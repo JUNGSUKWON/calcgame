@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-import dto.MunjeDto;
-import dto.NumDto;
-import dto.OpDto;
+import mDto.MunjeDto;
+import mDto.NumDto;
+import mDto.OpDto;
 
 public class Calc {
 	
 	//사용자가 만들어낼 문제의 수
 	private int n;
-	MunjeDto mDto = new MunjeDto();
+	MunjeDto mDto ;
 
 	Random rd = new Random();
 
@@ -31,35 +31,35 @@ public class Calc {
 		ArrayList<MunjeDto> mList = new ArrayList<MunjeDto>();
 		System.out.println("문제들을 저장");
 		for(int i=0;i<n;i++) {
-			MunjeDto dto = new MunjeDto();//dto는 인스턴스
+			mDto = new MunjeDto();//dto는 인스턴스
 
 			//만약에 -,/ 나올때 첫번째 수와 두번째 수를 바꿔야 되는데...
-			dto.setNum1(rd.nextInt(100)+1);
-			dto.setOp(getRandOper());
-			dto.setNum2(rd.nextInt(100)+1);
+			mDto.setNum1(rd.nextInt(100)+1);
+			mDto.setOp(getRandOper());
+			mDto.setNum2(rd.nextInt(100)+1);
 			
-			mySwap(dto);
-			if(dto.getOp().equals("+")) {
-				dto.setDab(dto.getNum1()+dto.getNum2());
-			}else if(dto.getOp().equals("-")) {
-				dto.setDab(dto.getNum1()-dto.getNum2());
-			}else if(dto.getOp().equals("*")) {
-				dto.setDab(dto.getNum1()*dto.getNum2());
-			}else if(dto.getOp().equals("/")) {
-				dto.setDab(dto.getNum1()/dto.getNum2());
+			mySwap(mDto);
+			if(mDto.getOp().equals("+")) {
+				mDto.setDab(mDto.getNum1()+mDto.getNum2());
+			}else if(mDto.getOp().equals("-")) {
+				mDto.setDab(mDto.getNum1()-mDto.getNum2());
+			}else if(mDto.getOp().equals("*")) {
+				mDto.setDab(mDto.getNum1()*mDto.getNum2());
+			}else if(mDto.getOp().equals("/")) {
+				mDto.setDab(mDto.getNum1()/mDto.getNum2());
 			}
-			mList.add(dto);
+			mList.add(mDto);
 		}
 		return mList;
 	}
 
-	private void mySwap(MunjeDto dto) {
-		if(dto.getOp().equals("-")||dto.getOp().equals("/")) {
-			if(dto.getNum1()<dto.getNum2()) {
+	private void mySwap(MunjeDto mDto) {
+		if(mDto.getOp().equals("-")||mDto.getOp().equals("/")) {
+			if(mDto.getNum1()<mDto.getNum2()) {
 //				System.out.println("바뀌기전 num1="+dto.getNum1()+"num2="+dto.getNum2());
-				int tmp=dto.getNum2();
-				dto.setNum2(dto.getNum1());
-				dto.setNum1(tmp);
+				int tmp=mDto.getNum2();
+				mDto.setNum2(mDto.getNum1());
+				mDto.setNum1(tmp);
 //				System.out.println("바꾸면 num1="+dto.getNum1()+"num2="+dto.getNum2());
 			}
 		}
@@ -77,22 +77,22 @@ public class Calc {
 	}
 	
 	//사용자의 입력 메소드
-	public void inputNumber(MunjeDto dto) {
+	public void inputNumber(MunjeDto mDto) {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("답을 입력해 주세요: ");
 		
 		try {
-			dto.setUserNumber(sc.nextInt());//유저의 답을 입력받는다
+			mDto.setUserNumber(sc.nextInt());//유저의 답을 입력받는다
 		}catch (Exception e) {
 			System.out.println("숫자만 입력하셔야 합니다!");
-			inputNumber(dto);
+			inputNumber(mDto);
 		}
 	}
 
 	static int ok =0;//맞힌 갯수
 	//답 체크 메소드
-	public void answerCheck(MunjeDto dto) {
-		if(dto.getDab()==dto.getUserNumber()) {
+	public void answerCheck(MunjeDto mDto) {
+		if(mDto.getDab()==mDto.getUserNumber()) {
 			System.out.println("맞다");
 			ok++;
 		}
